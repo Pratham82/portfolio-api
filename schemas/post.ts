@@ -8,12 +8,21 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'object',
-      fields: [
-        {name: 'blogTitle', type: 'string', title: 'Blog Title'},
-        {name: 'blogSubTitle', type: 'string', title: 'Blog SubTitle'},
-      ],
+      type: 'string',
     }),
+
+    defineField({
+      name: 'blogTitle',
+      title: 'Blog Title',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'blogSubtitle',
+      title: 'Blog Subtitle',
+      type: 'string',
+    }),
+
     defineField({
       name: 'slug',
       title: 'Slug',

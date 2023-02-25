@@ -13,13 +13,15 @@ export default defineType({
     }),
 
     defineField({
-      name: 'pageHeader',
-      title: 'Page Header',
-      type: 'object',
-      fields: [
-        {name: 'title', type: 'string', title: 'Title'},
-        {name: 'subTitle', type: 'string', title: 'SubTitle'},
-      ],
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
     }),
 
     defineField({
@@ -34,6 +36,13 @@ export default defineType({
     defineField({
       name: 'techStack',
       title: 'TechStack',
+      type: 'array',
+      of: [{type: 'techStack'}],
+    }),
+
+    defineField({
+      name: 'techStack2',
+      title: 'TechStack 2',
       type: 'object',
       fields: [
         {name: 'techStackTitle', type: 'string', title: 'Title'},
