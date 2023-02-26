@@ -12,13 +12,15 @@ export default defineType({
     }),
 
     defineField({
-      name: 'blogsPage',
-      title: 'Blogs Page',
-      type: 'object',
-      fields: [
-        {name: 'title', type: 'string', title: 'Title'},
-        {name: 'subTitle', type: 'string', title: 'SubTitle'},
-      ],
+      name: 'title',
+      title: 'Blogs Page Title',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'subTitle',
+      title: 'Blogs Page Subtitle',
+      type: 'string',
     }),
 
     defineField({
