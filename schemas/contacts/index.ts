@@ -1,10 +1,9 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'projectsPage',
-  title: 'Projects Page',
+  name: 'contactsPage',
+  title: 'Contacts Page',
   type: 'document',
-
   fields: [
     defineField({
       name: 'pageName',
@@ -25,18 +24,20 @@ export default defineType({
     }),
 
     defineField({
-      name: 'projects',
-      title: 'Projects',
+      name: 'contactsLinks',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'project'}}],
-      // of: [{type: 'project'}],
+      title: 'Contacts Links',
+      of: [
+        {
+          type: 'contactsLink',
+        },
+      ],
     }),
   ],
 
   preview: {
     select: {
       title: 'pageName',
-      media: 'image',
     },
   },
 })

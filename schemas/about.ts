@@ -12,58 +12,22 @@ export default defineType({
     }),
 
     defineField({
-      name: 'pageHeader',
-      title: 'Page Header',
-      type: 'object',
-      fields: [
-        {name: 'title', type: 'string', title: 'Title'},
-        {name: 'subTitle', type: 'string', title: 'SubTitle'},
-      ],
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'subtitle',
+      title: 'SubTitle',
+      type: 'string',
     }),
 
     defineField({
       name: 'workExperience',
       type: 'array',
       title: 'Work Experience',
-      of: [
-        {
-          title: 'title',
-          type: 'object',
-          fields: [
-            {
-              name: 'position',
-              title: 'Position',
-              type: 'string',
-            },
-            {
-              name: 'companyName',
-              title: 'Company Name',
-              type: 'string',
-            },
-            {
-              name: 'location',
-              title: 'Location',
-              type: 'string',
-            },
-            {
-              name: 'startDate',
-              title: 'Start Date',
-              type: 'date',
-              options: {
-                dateFormat: 'MMMM-YYYY',
-              },
-            },
-            {
-              name: 'endDate',
-              title: 'End Date',
-              type: 'date',
-              options: {
-                dateFormat: 'MMMM-YYYY',
-              },
-            },
-          ],
-        },
-      ],
+      of: [{type: 'workExperience'}],
     }),
 
     defineField({
@@ -72,40 +36,7 @@ export default defineType({
       title: 'Education',
       of: [
         {
-          title: 'title',
-          type: 'object',
-          fields: [
-            {
-              name: 'degree',
-              title: 'Degree',
-              type: 'string',
-            },
-            {
-              name: 'institution',
-              title: 'Institution',
-              type: 'object',
-              fields: [
-                {
-                  name: 'institution',
-                  title: 'Institution',
-                  type: 'string',
-                  initialValue: 'Mumbai University',
-                },
-                {
-                  name: 'startYear',
-                  title: 'Start Year',
-                  type: 'date',
-                  options: {dateFormat: 'YYYY'},
-                },
-                {
-                  name: 'endYear',
-                  title: 'End Year',
-                  type: 'date',
-                  options: {dateFormat: 'YYYY'},
-                },
-              ],
-            },
-          ],
+          type: 'education',
         },
       ],
     }),
@@ -113,13 +44,10 @@ export default defineType({
     defineField({
       name: 'resume',
       title: 'Resume',
-      type: 'object',
-      fields: [
-        {name: 'resumeText', type: 'string', title: 'Resume Text'},
-        {name: 'resumeLink', type: 'url', title: 'Resume Link'},
-      ],
+      type: 'resume',
     }),
   ],
+
   preview: {
     select: {
       title: 'pageName',

@@ -13,13 +13,15 @@ export default defineType({
     }),
 
     defineField({
-      name: 'pageHeader',
-      title: 'Page Header',
-      type: 'object',
-      fields: [
-        {name: 'title', type: 'string', title: 'Title'},
-        {name: 'subTitle', type: 'string', title: 'SubTitle'},
-      ],
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'subtitle',
+      title: 'SubTitle',
+      type: 'string',
     }),
 
     defineField({
@@ -34,40 +36,20 @@ export default defineType({
     defineField({
       name: 'techStack',
       title: 'TechStack',
-      type: 'object',
-      fields: [
-        {name: 'techStackTitle', type: 'string', title: 'Title'},
-        {
-          name: 'techStacks',
-          type: 'array',
-          of: [{type: 'string'}],
-        },
-      ],
+      type: 'techStack',
     }),
 
     defineField({
       name: 'contributions',
       title: 'Contributions',
-      type: 'object',
-      fields: [
-        {name: 'contributionsTitle', type: 'string', title: 'Title'},
-        {name: 'contributionsLink', type: 'url', title: 'link'},
-      ],
+      type: 'contributions',
     }),
 
     defineField({
       name: 'pageRedirects',
       title: 'Page Redirects',
       type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {name: 'linkTitle', type: 'string', title: 'LinkTitle'},
-            {name: 'link', type: 'string', title: 'linkURL'},
-          ],
-        },
-      ],
+      of: [{type: 'pageRedirect'}],
     }),
   ],
 
