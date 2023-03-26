@@ -74,7 +74,7 @@ export default defineType({
 
   preview: {
     select: {
-      title: 'title.blogTitle',
+      title: 'title',
       author: 'author.name',
       media: 'mainImage',
     },
