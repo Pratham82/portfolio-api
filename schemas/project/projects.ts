@@ -13,13 +13,15 @@ export default defineType({
     }),
 
     defineField({
-      name: 'pageHeader',
-      title: 'Page Header',
-      type: 'object',
-      fields: [
-        {name: 'title', type: 'string', title: 'Title'},
-        {name: 'subTitle', type: 'string', title: 'SubTitle'},
-      ],
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'subtitle',
+      title: 'SubTitle',
+      type: 'string',
     }),
 
     defineField({
@@ -27,6 +29,7 @@ export default defineType({
       title: 'Projects',
       type: 'array',
       of: [{type: 'reference', to: {type: 'project'}}],
+      // of: [{type: 'project'}],
     }),
   ],
 
