@@ -16,6 +16,7 @@ import {education, institution, resume, workExperience} from './aboutPage/about.
 import {githubURL, liveURL, metaProject} from './project/project.schema'
 import {contactsLink} from './contacts/contacts.schema'
 import project from './project/project'
+import photos from './photos/photos.schema'
 
 export const schemaTypes = [
   // projects
@@ -49,4 +50,7 @@ export const schemaTypes = [
   education,
   resume,
   institution,
+
+  //photos
+  photos,
 ]

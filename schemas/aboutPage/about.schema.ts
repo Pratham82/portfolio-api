@@ -36,6 +36,14 @@ const workExperience = defineType({
         dateFormat: 'MMMM-YYYY',
       },
     },
+    {
+      name: 'companyLogo',
+      title: 'Company Logo',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
 })
 
