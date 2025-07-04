@@ -44,6 +44,11 @@ const workExperience = defineType({
         hotspot: true,
       },
     },
+    {
+      name: 'description',
+      title: 'Work Description',
+      type: 'string',
+    },
   ],
 })
 
