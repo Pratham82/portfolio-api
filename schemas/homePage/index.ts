@@ -56,7 +56,7 @@ export default defineType({
   preview: {
     select: {
       title: 'pageName',
-      media: 'image',
+      media: 'avatar',
     },
   },
 })

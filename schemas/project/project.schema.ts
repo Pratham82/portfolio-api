@@ -3,9 +3,14 @@ import {defineField, defineType} from 'sanity'
 const metaProject = defineType({
   name: 'metaProject',
   title: 'Meta Project',
-  type: 'document',
+  type: 'object',
   fields: [
-    defineField({name: 'title', type: 'string', title: 'Title'}),
+    defineField({
+      name: 'title',
+      type: 'string',
+      title: 'Title',
+      validation: (rule) => rule.required(),
+    }),
     defineField({name: 'subTitle', type: 'string', title: 'SubTitle'}),
     defineField({name: 'mark', type: 'string', title: 'Mark'}),
     defineField({
@@ -40,7 +45,7 @@ const metaProject = defineType({
           {title: 'mongoDB', value: 'MongoDB'},
           {title: 'mongoose', value: 'Mongoose'},
           {title: 'pokeAPI', value: 'Poke API'},
-          {title: 'unsplashAPI', value: 'Unslash API'},
+          {title: 'unsplashAPI', value: 'Unsplash API'},
           {title: 'tmdbAPI', value: 'TMDB API'},
           {title: 'openWeather', value: 'OpenWeather API'},
           {title: 'githubAPI', value: 'Github API'},
@@ -57,6 +62,7 @@ const metaProject = defineType({
       name: 'projectCategory',
       type: 'string',
       title: 'Project Category',
+      validation: (rule) => rule.required(),
       options: {
         list: [
           {title: 'react', value: 'React'},

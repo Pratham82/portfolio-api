@@ -14,6 +14,8 @@ export default defineType({
       name: 'username',
       title: 'Username',
       type: 'string',
+      description: 'Matches the `author` frontmatter of blog posts on the site.',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'slug',
