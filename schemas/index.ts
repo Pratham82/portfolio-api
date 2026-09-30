@@ -3,7 +3,6 @@ import blockContent from './blog/blockContent'
 import category from './blog/category'
 import post from './blog/post'
 import author from './blog/author'
-import projects from './project/projects'
 import blogs from './blog/blogs'
 
 import contacts from './contacts'
@@ -23,7 +22,6 @@ export const schemaTypes = [
   // projects
   liveURL,
   project,
-  projects,
   githubURL,
 
   // home page

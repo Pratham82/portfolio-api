@@ -2,7 +2,7 @@ import {defineType} from 'sanity'
 
 const workExperience = defineType({
   name: 'workExperience',
-  title: 'title',
+  title: 'Work Experience',
   type: 'object',
   fields: [
     {
@@ -14,6 +14,9 @@ const workExperience = defineType({
       name: 'companyName',
       title: 'Company Name',
       type: 'string',
+      description:
+        'Must match the company name in the resume PDF; the site uses it to find the logo.',
+      validation: (rule) => rule.required(),
     },
     {
       name: 'location',
@@ -50,10 +53,13 @@ const workExperience = defineType({
       type: 'string',
     },
   ],
+  preview: {
+    select: {title: 'companyName', subtitle: 'position', media: 'companyLogo'},
+  },
 })
 
 const education = defineType({
-  title: 'title',
+  title: 'Education',
   name: 'education',
   type: 'object',
   fields: [
@@ -68,6 +74,9 @@ const education = defineType({
       type: 'institution',
     },
   ],
+  preview: {
+    select: {title: 'degree', subtitle: 'institution.institution'},
+  },
 })
 
 const resume = defineType({
@@ -76,7 +85,13 @@ const resume = defineType({
   type: 'object',
   fields: [
     {name: 'resumeText', type: 'string', title: 'Resume Text'},
-    {name: 'resumeLink', type: 'url', title: 'Resume Link'},
+    {
+      name: 'resumeLink',
+      type: 'url',
+      title: 'Resume Link',
+      description: 'Public link to the resume PDF. The site parses its Experience section.',
+      validation: (rule) => rule.uri({scheme: ['https']}),
+    },
   ],
 })
 
