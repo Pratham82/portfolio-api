@@ -4,6 +4,7 @@ import type {StructureResolver} from 'sanity/structure'
 export const singletons = [
   {type: 'homePage', title: 'Home Page'},
   {type: 'workExperiencePage', title: 'Experience'},
+  {type: 'nowPage', title: 'Now'},
 ] as const
 
 export const singletonTypes = new Set<string>(singletons.map(({type}) => type))
@@ -26,6 +27,7 @@ export const structure: StructureResolver = (S) =>
         S.listItem().title(title).id(type).child(S.document().schemaType(type).documentId(type)),
       ),
       S.divider(),
+      S.documentTypeListItem('link').title('Links'),
       S.documentTypeListItem('project').title('Projects'),
       S.documentTypeListItem('author').title('Authors'),
       S.divider(),
