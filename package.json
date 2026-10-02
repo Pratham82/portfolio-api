@@ -16,7 +16,8 @@
     "deploy-graphql": "sanity graphql deploy",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "migrate": "sanity exec scripts/migrate.ts --with-user-token --"
+    "migrate": "sanity exec scripts/migrate.ts --with-user-token --",
+    "import-content": "sanity exec scripts/importContent.ts --with-user-token --"
   },
   "keywords": [
     "sanity"
@@ -37,7 +38,8 @@
     "@types/react": "^19.2.0",
     "eslint": "^10.0.0",
     "prettier": "^3.6.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "yaml": "^2.9.1"
   },
   "prettier": {
     "semi": false,

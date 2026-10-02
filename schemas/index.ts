@@ -9,6 +9,8 @@ import contacts from './contacts'
 import about from './aboutPage'
 import homePage from './homePage'
 import workExperiencePage from './workExperience'
+import nowPage from './nowPage'
+import link from './link'
 
 // Schemas
 import {contributions, pageRedirects, techStack, pageRedirect} from './homePage/homepage.schema'
@@ -53,4 +55,8 @@ export const schemaTypes = [
 
   //photos
   photos,
+
+  // now + links
+  nowPage,
+  link,
 ]
