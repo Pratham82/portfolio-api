@@ -9,7 +9,7 @@ import contacts from './contacts'
 import about from './aboutPage'
 import homePage from './homePage'
 import workExperiencePage from './workExperience'
-import nowPage from './nowPage'
+import nowPage, {favouriteFilm} from './nowPage'
 import link from './link'
 
 // Schemas
@@ -58,5 +58,6 @@ export const schemaTypes = [
 
   // now + links
   nowPage,
+  favouriteFilm,
   link,
 ]
