@@ -7,6 +7,8 @@
  * 1. Moves the homePage and workExperiencePage documents to their fixed singleton IDs.
  * 2. Sets workExperiencePage.resume.resumeLink to the current resume (the site reads it from there now).
  * 3. Renames the "Unslash API" tech stack value to "Unsplash API" on projects.
+ * 4. Backfills project.projectType (application | experiment) on projects that lack it.
+ * 5. Creates the Links Vault project if it does not exist.
  */
 import {getCliClient} from 'sanity/cli'
 import type {SanityDocument} from 'sanity'
@@ -75,6 +77,55 @@ for (const {_id, techStackUsed} of projects) {
       'project.techStackUsed': techStackUsed.map((t) => (t === 'Unslash API' ? 'Unsplash API' : t)),
     }),
   )
+}
+
+// 4. Project type. Full-stack, real-time or multi-service builds are applications.
+const APPLICATIONS = new Set([
+  'Chat App',
+  'Real Time notes',
+  'Subscriptions Manager',
+  'LaunchPad',
+  'Contact manager',
+  'CRUD API',
+  'Issue Tracker',
+  'SNKR Town',
+  'Code Tube',
+  'Links Vault',
+])
+const untyped = await client.fetch<{_id: string; projectName: string}[]>(
+  `*[_type == "project" && !defined(project.projectType)]{_id, projectName}`,
+)
+for (const {_id, projectName} of untyped) {
+  const projectType = APPLICATIONS.has(projectName) ? 'application' : 'experiment'
+  plan(`Set projectType "${projectType}" on ${projectName} (${_id})`)
+  tx.patch(_id, (p) => p.set({'project.projectType': projectType}))
+}
+
+// 5. Links Vault
+const hasLinksVault = await client.fetch<boolean>(
+  `count(*[_type == "project" && projectName == "Links Vault"]) > 0`,
+)
+if (!hasLinksVault) {
+  plan('Create project Links Vault')
+  tx.create({
+    _id: 'project-links-vault',
+    _type: 'project',
+    projectName: 'Links Vault',
+    project: {
+      _type: 'metaProject',
+      title: 'Links Vault',
+      subTitle: 'Personal inbox for every link I share, with previews and AI topic tags',
+      liveURL: {_type: 'liveURL', linkText: 'live', link: 'https://links.pratham82.in'},
+      githubURL: {
+        _type: 'githubURL',
+        linkText: 'code',
+        link: 'https://github.com/Pratham82/links-vault',
+      },
+      techStackUsed: ['React', 'TypeScript', 'Docker'],
+      projectCategory: 'Full Stack',
+      projectType: 'application',
+    },
+  })
 }
 
 if (changes === 0) {

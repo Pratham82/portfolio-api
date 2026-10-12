@@ -75,6 +75,21 @@ const metaProject = defineType({
         ],
       },
     }),
+    defineField({
+      name: 'projectType',
+      type: 'string',
+      title: 'Project Type',
+      description: 'Application: full-stack or multi-service build. Experiment: small build or practice project.',
+      initialValue: 'experiment',
+      validation: (rule) => rule.required(),
+      options: {
+        layout: 'radio',
+        list: [
+          {title: 'Application', value: 'application'},
+          {title: 'Experiment', value: 'experiment'},
+        ],
+      },
+    }),
   ],
 })
 
